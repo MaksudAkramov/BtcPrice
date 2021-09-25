@@ -1,0 +1,48 @@
+body {
+    background-image: url('images/background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    
+
+
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+    text-shadow: black;
+    font-family: 'Anton', sans-serif;
+}
+.container-btc {
+    background-size: cover;
+    background-attachment: fixed;
+    color: #feb701;
+
+}
+/* logo */
+h1 {
+    padding-top: 20px;
+    color: #feb701;
+}
+.navbar {
+    width: 100%;
+    background-color: 	#feb701;
+    color: #feb701;
+}
+
+
+/* button */
+.btn {
+    margin-top: 40%;
+    text-decoration: none;
+}
+.price_body {
+    backface-visibility: visible;
+
+}
+
+.round {
+    background-color: #feb701;
+    border-radius:5px;
+}

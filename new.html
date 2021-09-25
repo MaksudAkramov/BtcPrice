@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title> Bitcoin Price</title>
+    <link rel="shortcut icon" href="images/web-icon.jpg">
+    
+    <link rel="stylesheet" href="bitcoin_style.css">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- шрифты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Righteous&family=Signika:wght@600&display=swap" rel="stylesheet">
+        
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ds.fusioncharts.com/2.0.8/js/ds.js"></script>
+     
+
+    <!-- bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <!-- ajax -->
+    <script src="jquery-3.5.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+
+    </head>
+    <body>
+        <div class="container">
+        
+            <nav class="navbar navbar-light">
+                <a class="navbar-brand" href="#">
+                  <img src="images/bitcoin-logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+                  Bitcoin
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link active" href="https://en.wikipedia.org/wiki/Cryptocurrency" target="_blank"> <img class="cryptocurrency" src="images/cryptocurrency.jpg" width="25" height="25" alt=""> &ensp;|&ensp;About Cryptocurrency <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link active" href="https://en.wikipedia.org/wiki/Bitcoin" target="_blank"> <img class="bitcoin-logo" src="images/bitcoin-logo.jpg" width="25" height="25" alt="">&ensp;|&ensp; About BTC</a>
+                        <a class="nav-item nav-link active" href="https://en.wikipedia.org/wiki/United_States_dollar" target="_blank"><img class="dollar-logo" src="images/dollar-logo.jpg" width="25" height="25" alt="">&ensp;|&ensp; About USD</a>
+                        <a class="nav-item nav-link active creators_mx" href="#" data-toggle="tooltip" title="Maksud and Hasan "><img class="creator" src="images/creator.jpg" width="25" height="25" alt="">&ensp;|&ensp; About Creators</a>
+                    </div>
+                    
+                </div>
+            </nav>   
+        </div>    
+
+        <div class="container">    
+            <div class="intro">
+                <h1 class="logo pl-2">Real-Time <abbr title="Bitcoin is decentralized digital cash that eliminates the need for intermediaries like banks and governments, using instead a peer-to-peer computer network to confirm purchases directly between users.">Bitcoin</abbr> price in <abbr title="United States Dollar">USD</abbr></h1>
+            </div>
+                <div class="container-btc">            
+                    <div class="h3">Bitcoin(BTC)</div>
+                    <div class="h5">(Price in USD)</div>
+                    <div class="price-body">
+                    <div id="btc_val" class="h4 kpi-value"></div> 
+                     
+                </div>
+        </div>
+        <button type="button" class="btn btn-outline-primary"><a href="https://t.me/Napa_Bitcoin_bot" target="_blank" data-toggle="tooltip" title="можно получать уведомление о цене каждый час!">Телеграм Бот</a></button>
+        
+    </body>     
+</html>
+
+<script>
+
+const api_url = 'https://api.cryptonator.com/api/ticker/btc-usd';
+// https://api.cryptonator.com/api/ticker/btc-usd
+
+function addLeadingZero(num) {
+	return (num <= 9) ? ("0" + num) : num;
+}
+
+
+function makeHttpObject() {
+	try {
+		return new XMLHttpRequest();
+	} catch (error) {}
+}
+
+function bitcoinGetData() {
+	var request = makeHttpObject();
+	request.open("GET", api_url, false);
+	request.send(null);
+	return request.responseText;
+}
+
+function bitcoinDataHandler() {
+	var raw_data_string = bitcoinGetData();
+	var data = JSON.parse(raw_data_string);
+	var price = data.ticker.price;
+	return price;
+}
+
+
+
+function update(i) {
+      
+    if (2  > i) {
+        setInterval(function() {
+            
+            document.getElementById("btc_val").innerHTML = "$" + bitcoinDataHandler();
+                
+        }, 10000);
+    } 
+
+}
+
+document.getElementById("btc_val").innerHTML = "$" + bitcoinDataHandler();
+
+update(0);
+
+
+
+</script>        
