@@ -4,6 +4,7 @@ import telebot
 import config
 from telebot import types
 import time
+import token
 
 bot = telebot.TeleBot(config.TOKEN)
 
@@ -50,7 +51,4 @@ if message.text == '🤖Sending Bitcoin every hour':
             price = get_btc(url)
             bot.send_message(message.chat.id, price)
             time.sleep(60)
-
-
-
 
