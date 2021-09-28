@@ -25,6 +25,12 @@ h1 {
     padding-top: 20px;
     color: #feb701;
 }
+
+.par {
+    margin-top: 30%;
+    color: #feb701;
+}
+
 .navbar {
     width: 100%;
     background-color: 	#feb701;
@@ -33,8 +39,16 @@ h1 {
 
 
 /* button */
-.btn {
-    margin-top: 40%;
+.tg-reference {
+    margin-top: 38%;
+    text-decoration: none;
+}
+
+.btn-outline-warning {
+    font-size: 22px;
+    font-weight: 400;
+}
+#tg {
     text-decoration: none;
 }
 .price_body {

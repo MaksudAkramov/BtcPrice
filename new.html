@@ -14,11 +14,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Righteous&family=Signika:wght@600&display=swap" rel="stylesheet">
         
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://ds.fusioncharts.com/2.0.8/js/ds.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
      
 
     <!-- bootstrap -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -38,7 +38,7 @@
             <nav class="navbar navbar-light">
                 <a class="navbar-brand" href="#">
                   <img src="images/bitcoin-logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
-                  Bitcoin
+                  &ensp;Bitcoin Price Tracker
                 </a>
                 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,8 +68,12 @@
                      
                 </div>
         </div>
-        <button type="button" class="btn btn-outline-primary"><a href="https://t.me/Napa_Bitcoin_bot" target="_blank" data-toggle="tooltip" title="можно получать уведомление о цене каждый час!">Телеграм Бот</a></button>
         
+        <div class="tg-reference">
+            <p class="par">You can also get bitcoin price notification on our Telegram-Bot below:</p>
+            <button type="button" class="btn btn-outline-warning btn-rounded" data-mdb-ripple-color="dark">
+            <a id="tg" href="https://t.me/Napa_Bitcoin_bot" target="_blank" data-toggle="tooltip" title="можно получать уведомление о цене каждый час!"><img src="images/color-tg.jpg" width="22" height="22" alt="" class="black-white_tg-icon">&ensp;Telegram Bot</a></button>
+        </div>  
     </body>     
 </html>
 
@@ -78,9 +82,6 @@
 const api_url = 'https://api.cryptonator.com/api/ticker/btc-usd';
 // https://api.cryptonator.com/api/ticker/btc-usd
 
-function addLeadingZero(num) {
-	return (num <= 9) ? ("0" + num) : num;
-}
 
 
 function makeHttpObject() {
@@ -103,24 +104,21 @@ function bitcoinDataHandler() {
 	return price;
 }
 
-
-
 function update(i) {
       
     if (2  > i) {
         setInterval(function() {
             
-            document.getElementById("btc_val").innerHTML = "$" + bitcoinDataHandler();
+            document.getElementById("btc_val").innerHTML = "$  " + bitcoinDataHandler();
                 
         }, 10000);
     } 
 
 }
 
-document.getElementById("btc_val").innerHTML = "$" + bitcoinDataHandler();
+document.getElementById("btc_val").innerHTML = "$  " + bitcoinDataHandler();
 
 update(0);
 
 
-
-</script>        
+</script>
